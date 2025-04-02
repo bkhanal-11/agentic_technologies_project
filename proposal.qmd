@@ -1,0 +1,24 @@
+---
+title: "To Be Decided (TBD)"
+author: "Abdelaziz Ibrahim, Besher Alkurdi & Bishwash Khanal"
+date: "today"
+date-format: "dddd MMM D, YYYY"
+format:
+  revealjs:
+    theme: [default]
+    navigation-mode: vertical
+    transition: slide
+table-of-contents: true
+toc-title: "Overview"
+toc-depth: 1
+---
+
+# Introduction
+
+## Background
+
+## Importance
+
+# Challenges
+
+# Scenarios
