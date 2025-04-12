@@ -1,0 +1,44 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="400" fill="#f9f9f9"/>
+  
+  <!-- User Interface Agent -->
+  <ellipse cx="300" cy="80" rx="100" ry="40" fill="#b3d1ff" stroke="#003366" stroke-width="2"/>
+  <text x="300" y="85" font-family="Arial" font-size="16" text-anchor="middle">USER INTERFACE</text>
+  
+  <!-- Analysis Agent -->
+  <ellipse cx="150" cy="200" rx="100" ry="40" fill="#b3d1ff" stroke="#003366" stroke-width="2"/>
+  <text x="150" y="205" font-family="Arial" font-size="16" text-anchor="middle">ANALYSIS AGENT</text>
+  
+  <!-- Knowledge Base -->
+  <ellipse cx="300" cy="320" rx="100" ry="40" fill="#b3d1ff" stroke="#003366" stroke-width="2"/>
+  <text x="300" y="325" font-family="Arial" font-size="16" text-anchor="middle">KNOWLEDGE BASE</text>
+  
+  <!-- Synthesis Agent -->
+  <ellipse cx="450" cy="200" rx="100" ry="40" fill="#b3d1ff" stroke="#003366" stroke-width="2"/>
+  <text x="450" y="205" font-family="Arial" font-size="16" text-anchor="middle">SYNTHESIS AGENT</text>
+  
+  <!-- Arrows for interactions -->
+  <!-- User Interface to Analysis Agent -->
+  <line x1="250" y1="115" x2="195" y2="165" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="120" y="130" font-family="Arial" font-size="12">Papers for Analysis</text>
+  
+  <!-- Analysis Agent to Knowledge Base -->
+  <line x1="190" y1="235" x2="260" y2="285" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="100" y="270" font-family="Arial" font-size="12">Extracted Information</text>
+  
+  <!-- Knowledge Base to Synthesis Agent -->
+  <line x1="350" y1="285" x2="410" y2="235" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="270" font-family="Arial" font-size="12">Structured Data</text>
+  
+  <!-- Synthesis Agent to User Interface -->
+  <line x1="410" y1="165" x2="345" y2="115" stroke="#000000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="410" y="130" font-family="Arial" font-size="12">Synthesized Findings</text>
+  
+  <!-- Arrowhead marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000000"/>
+    </marker>
+  </defs>
+</svg>

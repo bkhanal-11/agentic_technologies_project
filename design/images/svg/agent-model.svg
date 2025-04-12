@@ -1,0 +1,135 @@
+<svg viewBox="0 0 1000 850" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1000" height="850" fill="#ffffff"/>
+  
+  <!-- Arrowhead marker definitions -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000000"/>
+    </marker>
+    <marker id="redarrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#990000"/>
+    </marker>
+  </defs>
+  
+  <!-- Row 1 - Agent Types -->
+  <rect x="150" y="50" width="160" height="50" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="230" y="80" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Research Manager</text>
+  <text x="230" y="40" font-family="Arial" font-size="12" text-anchor="middle">1</text>
+  
+  <rect x="450" y="50" width="160" height="50" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="530" y="80" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Query Processor</text>
+  <text x="530" y="40" font-family="Arial" font-size="12" text-anchor="middle">1</text>
+  
+  <rect x="750" y="50" width="160" height="50" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="830" y="80" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Search Coordinator</text>
+  <text x="830" y="40" font-family="Arial" font-size="12" text-anchor="middle">1</text>
+  
+  <!-- Row 1 - Roles -->
+  <ellipse cx="230" cy="180" rx="90" ry="40" fill="#d1e0ff" stroke="#003366" stroke-width="1.5"/>
+  <text x="230" y="185" font-family="Arial" font-size="14" text-anchor="middle">USER INTERFACE</text>
+  
+  <ellipse cx="530" cy="180" rx="90" ry="40" fill="#d1e0ff" stroke="#003366" stroke-width="1.5"/>
+  <text x="530" y="185" font-family="Arial" font-size="14" text-anchor="middle">QUERY AGENT</text>
+  
+  <ellipse cx="830" cy="180" rx="90" ry="40" fill="#d1e0ff" stroke="#003366" stroke-width="1.5"/>
+  <text x="830" y="185" font-family="Arial" font-size="14" text-anchor="middle">SEARCH AGENT</text>
+  
+  <!-- Row 2 - Agent Types -->
+  <rect x="150" y="250" width="160" height="50" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="230" y="280" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Knowledge Integrator</text>
+  <text x="230" y="240" font-family="Arial" font-size="12" text-anchor="middle">1</text>
+  
+  <rect x="450" y="250" width="160" height="50" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="530" y="280" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Query Agent</text>
+  <text x="530" y="240" font-family="Arial" font-size="12" text-anchor="middle">1</text>
+  
+  <rect x="750" y="250" width="160" height="50" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="830" y="280" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Search Agent</text>
+  <text x="830" y="240" font-family="Arial" font-size="12" text-anchor="middle">1..*</text>
+  
+  <!-- Row 2 - Roles -->
+  <ellipse cx="230" cy="380" rx="90" ry="40" fill="#d1e0ff" stroke="#003366" stroke-width="1.5"/>
+  <text x="230" y="385" font-family="Arial" font-size="14" text-anchor="middle">SYNTHESIS AGENT</text>
+  
+  <ellipse cx="530" cy="380" rx="90" ry="40" fill="#d1e0ff" stroke="#003366" stroke-width="1.5"/>
+  <text x="530" y="385" font-family="Arial" font-size="14" text-anchor="middle">RESULTS AGENT</text>
+  
+  <ellipse cx="830" cy="380" rx="90" ry="40" fill="#d1e0ff" stroke="#003366" stroke-width="1.5"/>
+  <text x="830" y="385" font-family="Arial" font-size="14" text-anchor="middle">SEARCH AGENT</text>
+  
+  <!-- Row 3 - Agent Types -->
+  <rect x="150" y="450" width="160" height="50" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="230" y="480" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Results Agent</text>
+  <text x="230" y="440" font-family="Arial" font-size="12" text-anchor="middle">1</text>
+  
+  <rect x="450" y="450" width="160" height="50" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="530" y="480" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Analysis Agent</text>
+  <text x="530" y="440" font-family="Arial" font-size="12" text-anchor="middle">1</text>
+  
+  <rect x="750" y="450" width="160" height="50" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="830" y="480" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Synthesis Agent</text>
+  <text x="830" y="440" font-family="Arial" font-size="12" text-anchor="middle">1</text>
+  
+  <!-- Row 3 - Roles -->
+  <ellipse cx="230" cy="580" rx="90" ry="40" fill="#d1e0ff" stroke="#003366" stroke-width="1.5"/>
+  <text x="230" y="585" font-family="Arial" font-size="14" text-anchor="middle">RESULTS AGENT</text>
+  
+  <ellipse cx="530" cy="580" rx="90" ry="40" fill="#d1e0ff" stroke="#003366" stroke-width="1.5"/>
+  <text x="530" y="585" font-family="Arial" font-size="14" text-anchor="middle">ANALYSIS AGENT</text>
+  
+  <ellipse cx="830" cy="580" rx="90" ry="40" fill="#d1e0ff" stroke="#003366" stroke-width="1.5"/>
+  <text x="830" y="585" font-family="Arial" font-size="14" text-anchor="middle">SYNTHESIS AGENT</text>
+  
+  <!-- Row 4 - Knowledge Base -->
+  <rect x="450" y="650" width="160" height="50" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="530" y="680" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">Knowledge Base</text>
+  <text x="530" y="640" font-family="Arial" font-size="12" text-anchor="middle">1</text>
+  
+  <!-- Knowledge Base ellipse moved further below the rectangle with better separation -->
+  <ellipse cx="530" cy="780" rx="90" ry="40" fill="#d1e0ff" stroke="#003366" stroke-width="1.5"/>
+  <text x="530" y="785" font-family="Arial" font-size="14" text-anchor="middle">KNOWLEDGE BASE</text>
+  
+  <!-- Direct Implementation arrows - longer arrows for better visibility -->
+  <line x1="230" y1="100" x2="230" y2="140" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <line x1="530" y1="100" x2="530" y2="140" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <line x1="830" y1="100" x2="830" y2="140" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  
+  <line x1="230" y1="300" x2="230" y2="340" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <line x1="530" y1="300" x2="530" y2="340" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <line x1="830" y1="300" x2="830" y2="340" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  
+  <line x1="230" y1="500" x2="230" y2="540" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <line x1="530" y1="500" x2="530" y2="540" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <line x1="830" y1="500" x2="830" y2="540" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  
+  <!-- Knowledge Base box to ellipse connection -->
+  <line x1="530" y1="700" x2="530" y2="740" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  
+  <!-- Cross-relationship arrows (using dashed lines for clarity) -->
+  <!-- Query Processor to Results Agent -->
+  <path d="M 450 75 C 350 75 350 380 440 380" stroke="#990000" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#redarrow)"/>
+  
+  <!-- Research Manager to Analysis Agent -->
+  <path d="M 310 75 C 370 75 370 580 440 580" stroke="#990000" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#redarrow)"/>
+  
+  <!-- Search Agent to Knowledge Base -->
+  <path d="M 830 420 C 700 500 700 780 620 780" stroke="#990000" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#redarrow)"/>
+  
+  <!-- Analysis Agent to Knowledge Base -->
+  <path d="M 530 620 C 650 650 680 700 620 780" stroke="#990000" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#redarrow)"/>
+  
+  <!-- Query Agent to Search Agent -->
+  <path d="M 610 275 C 650 275 700 275 750 275" stroke="#990000" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#redarrow)"/>
+  
+  <!-- Knowledge Integrator to Synthesis Agent -->
+  <path d="M 310 275 C 400 275 780 420 830 450" stroke="#990000" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#redarrow)"/>
+  
+  <!-- Legend -->
+  <rect x="630" y="800" width="330" height="40" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <line x1="640" y1="820" x2="670" y2="820" stroke="#000000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <text x="700" y="825" font-family="Arial" font-size="12">Implements Role</text>
+  
+  <line x1="810" y1="820" x2="840" y2="820" stroke="#990000" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#redarrow)"/>
+  <text x="870" y="825" font-family="Arial" font-size="12">Interacts with</text>
+</svg>

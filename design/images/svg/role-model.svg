@@ -1,0 +1,52 @@
+<svg viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="700" fill="#ffffff"/>
+  
+  <!-- Role Schema Box -->
+  <rect x="50" y="50" width="500" height="600" fill="#ffffff" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Header -->
+  <rect x="50" y="50" width="500" height="50" fill="#f0f0f0" stroke="#000000" stroke-width="2"/>
+  <text x="300" y="82" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle">Role Schema: SEARCH AGENT</text>
+  
+  <!-- Description Section -->
+  <rect x="50" y="100" width="500" height="100" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="70" y="125" font-family="Arial" font-size="16" font-weight="bold">Description:</text>
+  <text x="90" y="155" font-family="Arial" font-size="14">This role is responsible for querying multiple academic databases,</text>
+  <text x="90" y="175" font-family="Arial" font-size="14">handling authentication, optimizing search parameters, and</text>
+  <text x="90" y="195" font-family="Arial" font-size="14">collecting comprehensive search results.</text>
+  
+  <!-- Protocols and Activities Section -->
+  <rect x="50" y="200" width="500" height="120" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="70" y="225" font-family="Arial" font-size="16" font-weight="bold">Protocols and Activities:</text>
+  <text x="90" y="255" font-family="Arial" font-size="14" text-decoration="underline">QueryDatabase</text>
+  <text x="220" y="255" font-family="Arial" font-size="14" text-decoration="underline">OptimizeSearchTerms</text>
+  <text x="390" y="255" font-family="Arial" font-size="14" text-decoration="underline">HandleAuthentication</text>
+  <text x="90" y="285" font-family="Arial" font-size="14" text-decoration="underline">CollectResults</text>
+  <text x="220" y="285" font-family="Arial" font-size="14" text-decoration="underline">FormatResults</text>
+  <text x="390" y="285" font-family="Arial" font-size="14" text-decoration="underline">ReportSearchStats</text>
+  
+  <!-- Permissions Section -->
+  <rect x="50" y="320" width="500" height="120" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="70" y="345" font-family="Arial" font-size="16" font-weight="bold">Permissions:</text>
+  <text x="90" y="375" font-family="Arial" font-size="14">reads</text>
+  <text x="200" y="375" font-family="Arial" font-size="14" font-style="italic">query parameters, database credentials</text>
+  <text x="90" y="405" font-family="Arial" font-size="14">generates</text>
+  <text x="200" y="405" font-family="Arial" font-size="14" font-style="italic">search results</text>
+  <text x="90" y="435" font-family="Arial" font-size="14">modifies</text>
+  <text x="200" y="435" font-family="Arial" font-size="14" font-style="italic">search optimization parameters</text>
+  
+  <!-- Responsibilities Section -->
+  <rect x="50" y="440" width="500" height="250" fill="#ffffff" stroke="#000000" stroke-width="1"/>
+  <text x="70" y="465" font-family="Arial" font-size="16" font-weight="bold">Responsibilities:</text>
+  <text x="90" y="495" font-family="Arial" font-size="14" font-weight="bold">Liveness:</text>
+  <text x="110" y="520" font-family="Arial" font-size="13">SEARCH_AGENT = (HandleAuthentication → OptimizeSearchTerms →</text>
+  <text x="110" y="540" font-family="Arial" font-size="13">QueryDatabase → CollectResults → FormatResults → </text>
+  <text x="110" y="560" font-family="Arial" font-size="13">ReportSearchStats)^*</text>
+  
+  <text x="90" y="590" font-family="Arial" font-size="14" font-weight="bold">Safety:</text>
+  <text x="110" y="615" font-family="Arial" font-size="13">• All required databases are successfully queried</text>
+  <text x="110" y="635" font-family="Arial" font-size="13">• No duplicate results in final collection</text>
+  <text x="110" y="655" font-family="Arial" font-size="13">• Authentication errors are properly handled and reported</text>
+  <text x="110" y="675" font-family="Arial" font-size="13">• Search completeness metrics are generated</text>
+</svg>

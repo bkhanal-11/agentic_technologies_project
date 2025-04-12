@@ -1,0 +1,40 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="400" fill="#f0f8f0"/>
+  
+  <!-- Background ellipse -->
+  <ellipse cx="300" cy="200" rx="270" ry="190" fill="#e6f2ff" stroke="#003366" stroke-width="2"/>
+  
+  <!-- Environmental resources -->
+  <g>
+    <!-- Row 1 -->
+    <rect x="100" y="80" width="120" height="50" fill="#ffffcc" stroke="#666666" stroke-width="1" rx="5" ry="5"/>
+    <text x="160" y="110" font-family="Arial" font-size="14" text-anchor="middle">Academic Papers</text>
+    
+    <rect x="230" y="80" width="140" height="50" fill="#ffffcc" stroke="#666666" stroke-width="1" rx="5" ry="5"/>
+    <text x="300" y="110" font-family="Arial" font-size="14" text-anchor="middle">Research Questions</text>
+    
+    <rect x="375" y="80" width="130" height="50" fill="#ffffcc" stroke="#666666" stroke-width="1" rx="5" ry="5"/>
+    <text x="440" y="110" font-family="Arial" font-size="14" text-anchor="middle">Search Parameters</text>
+    
+    <!-- Row 2 -->
+    <rect x="100" y="160" width="120" height="50" fill="#ffffcc" stroke="#666666" stroke-width="1" rx="5" ry="5"/>
+    <text x="160" y="190" font-family="Arial" font-size="14" text-anchor="middle">Paper Content</text>
+    
+    <rect x="240" y="160" width="120" height="50" fill="#ffffcc" stroke="#666666" stroke-width="1" rx="5" ry="5"/>
+    <text x="300" y="190" font-family="Arial" font-size="14" text-anchor="middle">Summaries</text>
+    
+    <rect x="380" y="160" width="120" height="50" fill="#ffffcc" stroke="#666666" stroke-width="1" rx="5" ry="5"/>
+    <text x="440" y="190" font-family="Arial" font-size="14" text-anchor="middle">Analysis Reports</text>
+    
+    <!-- Row 3 -->
+    <rect x="100" y="240" width="120" height="50" fill="#ffffcc" stroke="#666666" stroke-width="1" rx="5" ry="5"/>
+    <text x="160" y="270" font-family="Arial" font-size="14" text-anchor="middle">Citation Data</text>
+    
+    <rect x="240" y="240" width="120" height="50" fill="#ffffcc" stroke="#666666" stroke-width="1" rx="5" ry="5"/>
+    <text x="300" y="270" font-family="Arial" font-size="14" text-anchor="middle">Topic Keywords</text>
+    
+    <rect x="365" y="240" width="150" height="50" fill="#ffffcc" stroke="#666666" stroke-width="1" rx="5" ry="5"/>
+    <text x="440" y="270" font-family="Arial" font-size="14" text-anchor="middle">Synthesis Documents</text>
+  </g>
+</svg>
