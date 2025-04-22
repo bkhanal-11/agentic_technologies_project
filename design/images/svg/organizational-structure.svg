@@ -22,7 +22,7 @@
   
   <!-- Third tier nodes - First Row -->
   <ellipse cx="100" cy="370" rx="80" ry="40" fill="#d1e0ff" stroke="#003366" stroke-width="2"/>
-  <text x="100" y="375" font-family="Arial" font-size="15" text-anchor="middle">Query Agent</text>
+  <text x="100" y="375" font-family="Arial" font-size="15" text-anchor="middle">Researcher Agent</text>
   
   <ellipse cx="270" cy="370" rx="80" ry="40" fill="#d1e0ff" stroke="#003366" stroke-width="2"/>
   <text x="270" y="375" font-family="Arial" font-size="15" text-anchor="middle">Search Agent</text>
@@ -34,7 +34,7 @@
   <text x="620" y="375" font-family="Arial" font-size="15" text-anchor="middle">Analysis Agent</text>
   
   <ellipse cx="800" cy="370" rx="80" ry="40" fill="#d1e0ff" stroke="#003366" stroke-width="2"/>
-  <text x="800" y="375" font-family="Arial" font-size="15" text-anchor="middle">Knowledge Base</text>
+  <text x="800" y="375" font-family="Arial" font-size="15" text-anchor="middle">Summarization Agent</text>
   
   <ellipse cx="710" cy="460" rx="80" ry="40" fill="#d1e0ff" stroke="#003366" stroke-width="2"/>
   <text x="710" y="465" font-family="Arial" font-size="15" text-anchor="middle">Synthesis Agent</text>
