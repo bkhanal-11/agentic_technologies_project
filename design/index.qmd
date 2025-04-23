@@ -1,0 +1,112 @@
+---
+title: "Research Assistant Multi-Agent System"
+subtitle: "Design using GAIA Methodology"
+authors: "Besher Alkurdi, Bishwash Khanal, Abdelaziz Ibrahim"
+format:
+  revealjs: 
+    slide-number: true
+    transition: slide
+    background-transition: fade
+    incremental: false
+---
+
+## Problem Domain {background-color="#f5f5f5"}
+
+### Challenges in Literature Review:
+
+- **Information Overload**: Volume of papers overwhelming
+- **Quality Assessment**: Evaluating relevance difficult
+- **Synthesis Complexity**: Connecting findings requires expertise
+- **Time Constraints**: Processing sources is time-consuming
+
+## Why It Matters {.smaller background-color="#f0f7ff"}
+
+- Starting research in explored areas
+- Understanding topics deeply
+- Finding research gaps
+- Avoiding duplication of efforts
+
+## Multi-Agent System Approach {background-color="#f5f5f5" transition="slide"}
+
+A systematic solution leveraging autonomous agents to automate:
+
+- Literature search across multiple repositories
+- Content extraction and organization
+- Analysis of methodologies and findings
+- Synthesis of related concepts
+
+## Scenario 1: Comprehensive Literature Collection {background-color="#f8f9fa" transition="fade"}
+
+![](images/preliminary-roles-scenario1.png){width="75%" fig-align="center"}
+
+::: {.notes}
+This diagram shows the automated research workflow with agents interacting with each other and external services:
+1. Researcher Agent initiates with Research Intent
+2. Query Construction Agent formulates Structured Queries
+3. Search Agent interacts with Search Services
+4. Relevant Methods Extractor processes Search Results
+5. Knowledge Aggregator stores Structured Knowledge
+6. Two feedback loops improve the process over time
+:::
+
+## Scenario 2: Content Analysis and Synthesis {background-color="#edf8fb" transition="fade"}
+
+![](images/preliminary-roles-scenario2.png){height="70%" fig-align="center"}
+
+::: {.notes}
+This diagram shows:
+1. Knowledge Base provides Research Papers as input
+2. Analysis Agent extracts key methodologies and findings
+3. Summarization Agent condenses information
+4. Synthesis Agent identifies themes and research gaps
+5. Researcher Agent reviews the final synthesized report
+6. Knowledge Aggregator coordinates the overall process
+:::
+
+## Environmental Model {background-color="#f0f8f0"}
+
+![](images/environmental-model.png){height="75%" fig-align="center"}
+
+## Role Schema: Search Agent {transition="fade"}
+
+![](images/role-model.png){width="50%" fig-align="center"}
+
+## Organizational Structure {background-color="#f9f9f9" transition="slide"}
+
+![](images/organizational-structure.png){width="75%" fig-align="center"}
+
+## Agent Model {background-color="#fff" transition="slide"}
+
+![](images/agent-model.png){height="75%" fig-align="center"}
+
+## Interaction Protocols {.smaller}
+
+| **Protocol** | **Initiator** | **Partner** | **Inputs** | **Outputs** |
+|--------------|--------------|------------|-----------|------------|
+| FormulateQuery | User Interface | Query Agent | Research question | Search parameters |
+| QueryDatabase | Search Agent | Database | Search parameters | Raw results |
+| AnalyzePaper | Analysis Agent | Knowledge Base | Paper content | Structured analysis |
+| SynthesizeFindings | Synthesis Agent | Knowledge Base | Multiple analyses | Synthesis report |
+
+## Key Benefits {auto-animate="true" background-color="#f0f7ff"}
+
+- **Comprehensive Coverage**: Search across multiple repositories
+- **Time Efficiency**: Automate repetitive extraction tasks
+- **Improved Analysis**: Connect findings across disciplines
+- **Reduced Oversight**: Minimize human error and bias
+
+## Next Steps {auto-animate="true" background-color="#f0f7ff"}
+
+::: {style="opacity: 0.2;"}
+- **Comprehensive Coverage**: Search across multiple repositories
+- **Time Efficiency**: Automate repetitive extraction tasks
+- **Improved Analysis**: Connect findings across disciplines
+- **Reduced Oversight**: Minimize human error and bias
+:::
+- **Implementation**: Develop agent prototypes
+- **Evaluation**: Test system with real research questions
+- **Refinement**: Improve based on researcher feedback
+
+## Thank You {background-color="#edf8fb" .center .middle}
+
+**Questions?**
