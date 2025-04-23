@@ -1,1 +1,14 @@
 index_files/
+*.bbl  
+*.blg          
+*.fls  
+*.out  
+*.run.xml
+*.aux  
+*.bcf  
+*.fdb_latexmk  
+*.log  
+*.pdf  
+*.synctex.gz
+*.tdo
+*.html
