@@ -36,7 +36,7 @@
     {\large\textbf{Design using GAIA Methodology}}\\
     \vspace{0.5cm}
 }
-\author{Besher Alkurdi \and Bishwash Khanal \and Abdelaziz Ibrahim}
+\author{Abdelaziz Ibrahim \and Besher Alkurdi \and Bishwash Khanal}
 \date{\today}
 
 \begin{document}
@@ -115,22 +115,22 @@ We have identified two key scenarios that our multi-agent system will address:
     \label{fig:scenario2}
 \end{figure}
 
-\subsubsection{Organizational Rules}
-The following organizational rules govern the interactions between agents in our system:
+% \subsubsection{Organizational Rules}
+% The following organizational rules govern the interactions between agents in our system:
 
-\begin{enumerate}
-    \item Each research query must be processed by at least one Search Agent: \\
-    $\forall q.card(SEARCH\_AGENT(q)) \geq 1$
+% \begin{enumerate}
+%     \item Each research query must be processed by at least one Search Agent: \\
+%     $\forall q.card(SEARCH\_AGENT(q)) \geq 1$
     
-    \item A Query Agent cannot evaluate its own search parameters: \\
-    $\forall q. \forall a: plays(a, QUERY\_AGENT(q)) \Rightarrow \neg plays(a, SEARCH\_EVALUATOR(q))$
+%     \item A Query Agent cannot evaluate its own search parameters: \\
+%     $\forall q. \forall a: plays(a, QUERY\_AGENT(q)) \Rightarrow \neg plays(a, SEARCH\_EVALUATOR(q))$
     
-    \item If a paper is found, it must be analyzed: \\
-    $\forall p. participate(r, FindPaper(p)) \Rightarrow \lozenge initiate(r, AnalyzePaper(p))$
+%     \item If a paper is found, it must be analyzed: \\
+%     $\forall p. participate(r, FindPaper(p)) \Rightarrow \lozenge initiate(r, AnalyzePaper(p))$
     
-    \item Every analyzed paper must be included in the knowledge base: \\
-    $\forall p. participate(r, AnalyzePaper(p)) \Rightarrow \lozenge initiate(r, StoreInKnowledgeBase(p))$
-\end{enumerate}
+%     \item Every analyzed paper must be included in the knowledge base: \\
+%     $\forall p. participate(r, AnalyzePaper(p)) \Rightarrow \lozenge initiate(r, StoreInKnowledgeBase(p))$
+% \end{enumerate}
 
 \subsection{Architectural Design}
 
@@ -153,7 +153,7 @@ The interaction model defines the communication protocols between agents:
     \hline
     \textbf{Protocol Name} & \textbf{Initiator} & \textbf{Partner} & \textbf{Inputs} & \textbf{Outputs} \\
     \hline
-    FormulateQuery & User Interface & Query Agent & Research question & Search parameters \\
+    FormulateQuery & User & Researcher Agent & Research question & Search parameters \\
     \hline
     QueryDatabase & Search Agent & Database & Search parameters & Raw results \\
     \hline
@@ -163,22 +163,22 @@ The interaction model defines the communication protocols between agents:
     \hline
     SynthesizeFindings & Synthesis Agent & Knowledge Base & Multiple analyses & Synthesis report \\
     \hline
-    PresentFindings & User Interface & Synthesis Agent & Synthesis report & Visualized findings \\
+    PresentFindings & User & Synthesis Agent & Synthesis report & Visualized findings \\
     \hline
     \end{tabular}
     \caption{Interaction Model for Research Assistant MAS}
     \label{tab:interaction-model}
 \end{table}
 
-\subsubsection{Organizational Structure}
-The organizational structure of our MAS is as follows:
+% \subsubsection{Organizational Structure}
+% The organizational structure of our MAS is as follows:
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{images/organizational-structure.png}
-    \caption{Organizational Structure for Research Assistant MAS}
-    \label{fig:org-structure}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=\textwidth]{images/organizational-structure.png}
+%     \caption{Organizational Structure for Research Assistant MAS}
+%     \label{fig:org-structure}
+% \end{figure}
 
 \subsection{Detailed Design}
 
@@ -187,7 +187,7 @@ The agent model maps roles to specific agent types:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{images/agent-model.png}
+    \includegraphics[width=0.7\textwidth]{images/agent-model.png}
     \caption{Agent Model for Research Assistant MAS}
     \label{fig:agent-model}
 \end{figure}
