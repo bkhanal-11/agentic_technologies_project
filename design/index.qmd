@@ -3,7 +3,7 @@ title: "Research Assistant Multi-Agent System"
 subtitle: "Design using GAIA Methodology"
 authors: "Besher Alkurdi, Bishwash Khanal, Abdelaziz Ibrahim"
 format:
-  revealjs: 
+  revealjs:
     slide-number: true
     transition: slide
     background-transition: fade
@@ -74,7 +74,7 @@ This diagram shows:
 | QueryDatabase | Search parameters, credentials | Raw search results | Authentication successful | Results collected from database |
 | OptimizeSearch | Initial parameters, research context | Optimized query | Initial parameters provided | Expanded query with synonyms |
 | CollectResults | Raw results from multiple databases | Consolidated result set | Search operations completed | Duplicates removed |
-| AnalyzePaper | Paper content | Methods, Findings | Full text available | Key information extracted |
+| AnalyzePaper | Paper content | Structured analysis (methods, findings) | Full text available | Key information extracted |
 | SynthesizeFindings | Multiple paper analyses | Synthesis report with trends | Multiple papers analyzed | Connections between papers identified |
 
 ## Key Benefits {auto-animate="true" background-color="#f0f7ff"}
