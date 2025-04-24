@@ -155,13 +155,13 @@ The interaction model defines the communication protocols between agents:
     \hline
     FormulateQuery & User & Researcher Agent & Research question & Search parameters \\
     \hline
-    QueryDatabase & Search Agent & Database & Search parameters & Raw results \\
+    QueryDatabase & Search Agent & Search Services & Search parameters & Raw results \\
     \hline
-    AggregateResults & Results Agent & Search Agent & Raw results & Consolidated results \\
+    AggregateResults & Knowledge Aggregator Agent & Relevan Methods Extractor Agent & Related Research & Knowledge Base \\
     \hline
-    AnalyzePaper & Analysis Agent & Knowledge Base & Paper content & Structured analysis \\
+    AnalyzePaper & Analysis Agent & Knowledge Aggregator Agent & Knowledge Base &  Methodologies and Findings report \\
     \hline
-    SynthesizeFindings & Synthesis Agent & Knowledge Base & Multiple analyses & Synthesis report \\
+    SynthesizeFindings & Synthesis Agent & Summarization Agent & Summarized Methodologies and Findings & Synthesis Report \\
     \hline
     PresentFindings & User & Synthesis Agent & Synthesis report & Visualized findings \\
     \hline
