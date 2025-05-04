@@ -12,3 +12,7 @@ index_files/
 *.synctex.gz
 *.tdo
 *.html
+**/venv/
+*.db
+**/__pycache__/
+**/results/
