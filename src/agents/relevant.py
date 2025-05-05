@@ -1,15 +1,9 @@
-import asyncio
 import json
-import logging
-import os
-import time
 from datetime import datetime
-from typing import List, Dict, Any, Optional
+from typing import Dict, Any
 
-import aiohttp
-import spade
 from spade.agent import Agent
-from spade.behaviour import CyclicBehaviour, OneShotBehaviour
+from spade.behaviour import CyclicBehaviour
 from spade.message import Message
 from spade.template import Template
 
@@ -25,7 +19,6 @@ class RelevantAgent(Agent):
     
     class FindRelevantBehaviour(CyclicBehaviour):
         async def run(self):
-            # Get message
             msg = await self.receive(timeout=CONFIG["timeout"])
             if not msg:
                 return
@@ -41,11 +34,9 @@ class RelevantAgent(Agent):
                     logger.warning("No search results to process")
                     return
                 
-                # Use Gemini to evaluate relevance of papers
                 llm_service = GeminiLLMService(CONFIG["gemini_api_key"])
                 
-                # Prepare a sample of results for evaluation
-                sample_results = results[:10]  # Evaluate top 10 papers
+                sample_results = results[:10]
                 
                 prompt = f"""
                 Evaluate the relevance of these research papers to the following question:
@@ -56,7 +47,7 @@ class RelevantAgent(Agent):
                 {json.dumps([{
                     "id": p.get("id"),
                     "title": p.get("title"),
-                    "summary": p.get("summary")[:500] + "..." if len(p.get("summary", "")) > 500 else p.get("summary", ""),
+                    "summary": p.get("summary", ""),
                     "authors": p.get("authors", [])[:3]
                 } for p in sample_results], indent=2)}
                 
@@ -78,30 +69,25 @@ class RelevantAgent(Agent):
                 
                 llm_response = await llm_service.generate_content(prompt)
                 
-                # Parse the LLM response to extract JSON
                 relevance_data = self._extract_json_from_llm_response(llm_response)
                 
                 if not relevance_data or "papers" not in relevance_data:
                     logger.error("Failed to get valid relevance evaluation from LLM")
-                    # Create fallback relevance data
                     relevance_data = {
                         "papers": [{"id": p.get("id"), "relevance_score": 5.0, "rationale": "Default score"} for p in sample_results],
                         "should_refine_query": False,
                         "refinement_suggestion": ""
                     }
                 
-                # Create a mapping of paper IDs to relevance scores
                 relevance_scores = {p.get("id"): p.get("relevance_score", 0) for p in relevance_data.get("papers", [])}
                 
-                # Find relevant papers (score above threshold)
-                threshold = CONFIG["relevance_threshold"] * 10  # Convert to 0-10 scale
+                threshold = CONFIG["relevance_threshold"] * 10
                 relevant_papers = []
                 
                 for paper in results:
                     paper_id = paper.get("id")
                     relevance_score = relevance_scores.get(paper_id, 0)
                     
-                    # Add relevance info to the paper
                     paper["relevance_score"] = relevance_score
                     paper["relevance_rationale"] = next((p.get("rationale", "") for p in relevance_data.get("papers", []) 
                                                        if p.get("id") == paper_id), "")
@@ -109,12 +95,10 @@ class RelevantAgent(Agent):
                     if relevance_score >= threshold:
                         relevant_papers.append(paper)
                 
-                # Decide whether to refine the query or proceed with aggregation
                 should_refine = relevance_data.get("should_refine_query", False)
                 refinement_suggestion = relevance_data.get("refinement_suggestion", "")
                 
                 if should_refine and len(relevant_papers) < 5:
-                    # Not enough relevant papers, refine the query
                     refine_data = {
                         "research_question": research_question + (f" - {refinement_suggestion}" if refinement_suggestion else ""),
                         "previous_results": [p.get("id") for p in relevant_papers]
@@ -129,7 +113,6 @@ class RelevantAgent(Agent):
                     logger.info(f"RelevantAgent requested query refinement")
                     
                 else:
-                    # Enough relevant papers, send to KnowledgeAggregator
                     relevant_data = {
                         "research_question": research_question,
                         "relevant_papers": relevant_papers,
@@ -150,10 +133,8 @@ class RelevantAgent(Agent):
         def _extract_json_from_llm_response(self, response: str) -> Dict[str, Any]:
             """Extract JSON content from LLM response text"""
             try:
-                # First try if response is already valid JSON
                 return json.loads(response)
             except json.JSONDecodeError:
-                # Try to find JSON within markdown code blocks
                 import re
                 json_match = re.search(r'```(?:json)?\s*(.*?)```', response, re.DOTALL)
                 if json_match:
@@ -162,7 +143,6 @@ class RelevantAgent(Agent):
                     except json.JSONDecodeError:
                         pass
                 
-                # Try to find anything that looks like JSON
                 try:
                     start_idx = response.find('{')
                     end_idx = response.rfind('}') + 1
@@ -176,7 +156,6 @@ class RelevantAgent(Agent):
                 return {}
     
     async def setup(self):
-        # Register the behavior
         template = Template(metadata={"type": MessageType.SEARCH_RESULTS})
         behaviour = self.FindRelevantBehaviour()
         self.add_behaviour(behaviour, template)

@@ -1,15 +1,8 @@
-import asyncio
 import json
-import logging
-import os
-import time
-from datetime import datetime
-from typing import List, Dict, Any, Optional
+from typing import Dict, Any
 
-import aiohttp
-import spade
 from spade.agent import Agent
-from spade.behaviour import CyclicBehaviour, OneShotBehaviour
+from spade.behaviour import OneShotBehaviour
 from spade.message import Message
 from spade.template import Template
 
@@ -28,7 +21,6 @@ class QueryConstructionAgent(Agent):
     
     class ConstructQueryBehaviour(OneShotBehaviour):
         async def run(self):
-            # Get the message
             msg = await self.receive(timeout=CONFIG["timeout"])
             if not msg:
                 logger.warning("QueryConstructionAgent timeout - no message received")
@@ -44,14 +36,11 @@ class QueryConstructionAgent(Agent):
                     logger.error("No research question provided")
                     return
                 
-                # Use Google Gemini to create structured search parameters
                 llm_service = GeminiLLMService(CONFIG["gemini_api_key"])
                 
-                # Determine if this is a refined query
                 is_refined = msg.metadata.get("type") == MessageType.REFINED_QUERY
                 previous_results = content.get("previous_results", []) if is_refined else []
                 
-                # Create appropriate prompt based on query type
                 if is_refined:
                     prompt = f"""
                     I need to refine a research query based on initial search results.
@@ -113,12 +102,10 @@ class QueryConstructionAgent(Agent):
                 
                 llm_response = await llm_service.generate_content(prompt)
                 
-                # Parse the LLM response to extract JSON
                 search_params = self._extract_json_from_llm_response(llm_response)
                 
                 if not search_params or "search_queries" not in search_params:
                     logger.error(f"Failed to parse valid search parameters from LLM response")
-                    # Create fallback parameters
                     search_params = {
                         "search_queries": [
                             {"query": research_question, "explanation": "Using original query"}
@@ -126,10 +113,8 @@ class QueryConstructionAgent(Agent):
                         "rationale": "Fallback to original query due to parsing issues"
                     }
                 
-                # Add original research question
                 search_params["research_question"] = research_question
                 
-                # Send the search parameters to the SearchAgent
                 reply = Message(
                     to="search_agent@localhost",
                     body=json.dumps(search_params),
@@ -144,10 +129,8 @@ class QueryConstructionAgent(Agent):
         def _extract_json_from_llm_response(self, response: str) -> Dict[str, Any]:
             """Extract JSON content from LLM response text"""
             try:
-                # First try if response is already valid JSON
                 return json.loads(response)
             except json.JSONDecodeError:
-                # Try to find JSON within markdown code blocks
                 import re
                 json_match = re.search(r'```(?:json)?\s*(.*?)```', response, re.DOTALL)
                 if json_match:
@@ -156,7 +139,6 @@ class QueryConstructionAgent(Agent):
                     except json.JSONDecodeError:
                         pass
                 
-                # Try to find anything that looks like JSON
                 try:
                     start_idx = response.find('{')
                     end_idx = response.rfind('}') + 1
@@ -170,10 +152,7 @@ class QueryConstructionAgent(Agent):
                 return {}
     
     async def setup(self):
-        # Register the behavior
         template_research = Template(metadata={"type": MessageType.RESEARCH_QUERY})
         template_refined = Template(metadata={"type": MessageType.REFINED_QUERY})
-        
-        # Add behavior for both message types
         self.add_behaviour(self.ConstructQueryBehaviour(), template_research | template_refined)
         logger.info("QueryConstructionAgent is ready")
