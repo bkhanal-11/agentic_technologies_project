@@ -1,4 +1,6 @@
 from typing import List, Dict, Any, Optional
+import xml.etree.ElementTree as ET
+
 import aiohttp
 
 from utils.logger import logger
@@ -30,62 +32,48 @@ class ArxivService:
                     return []
     
     def _parse_arxiv_response(self, xml_response: str) -> List[Dict[str, Any]]:
-        """Parse arXiv API XML response into structured data"""
-        # Using minidom to parse XML
-        from xml.dom import minidom
-        
         try:
-            dom = minidom.parseString(xml_response)
-            entries = dom.getElementsByTagName("entry")
-            
+            root = ET.fromstring(xml_response)
+            ns = {'atom': 'http://www.w3.org/2005/Atom'}  # Define the namespace
+
             results = []
-            for entry in entries:
-                # Extract paper details
-                title_elem = entry.getElementsByTagName("title")
-                title = title_elem[0].firstChild.nodeValue.strip() if title_elem else "Unknown Title"
+            for entry in root.findall('atom:entry', ns):
+                title_elem = entry.find('atom:title', ns)
+                title = title_elem.text.strip() if title_elem is not None else "Unknown Title"
                 
-                summary_elem = entry.getElementsByTagName("summary")
-                summary = summary_elem[0].firstChild.nodeValue.strip() if summary_elem else ""
+                summary_elem = entry.find('atom:summary', ns)
+                summary = summary_elem.text.strip() if summary_elem is not None else ""
                 
                 # Extract author information
                 authors = []
-                author_elems = entry.getElementsByTagName("author")
-                for author_elem in author_elems:
-                    name_elem = author_elem.getElementsByTagName("name")
-                    if name_elem:
-                        authors.append(name_elem[0].firstChild.nodeValue.strip())
+                for author_elem in entry.findall('atom:author', ns):
+                    name_elem = author_elem.find('atom:name', ns)
+                    if name_elem is not None:
+                        authors.append(name_elem.text.strip())
                 
                 # Extract published date
-                published_elem = entry.getElementsByTagName("published")
-                published = published_elem[0].firstChild.nodeValue.strip() if published_elem else ""
+                published_elem = entry.find('atom:published', ns)
+                published = published_elem.text.strip() if published_elem is not None else ""
                 
-                # Extract link to paper
-                links = entry.getElementsByTagName("link")
+                # Extract links
                 pdf_link = ""
                 page_link = ""
-                for link in links:
-                    href = link.getAttribute("href")
-                    rel = link.getAttribute("rel")
-                    title = link.getAttribute("title")
+                for link in entry.findall('atom:link', ns):
+                    href = link.get('href')
+                    rel = link.get('rel')
+                    title_attr = link.get('title')
                     
                     if rel == "alternate":
                         page_link = href
-                    elif title == "pdf":
+                    elif title_attr == "pdf":
                         pdf_link = href
                 
                 # Extract categories/tags
-                categories = []
-                category_elems = entry.getElementsByTagName("category")
-                for cat_elem in category_elems:
-                    categories.append(cat_elem.getAttribute("term"))
+                categories = [cat.get('term') for cat in entry.findall('atom:category', ns)]
                 
                 # Extract paper ID
-                id_elem = entry.getElementsByTagName("id")
-                arxiv_id = ""
-                if id_elem:
-                    id_url = id_elem[0].firstChild.nodeValue.strip()
-                    # Extract ID from URL (e.g., http://arxiv.org/abs/2104.08696v1 -> 2104.08696v1)
-                    arxiv_id = id_url.split("/")[-1]
+                id_elem = entry.find('atom:id', ns)
+                arxiv_id = id_elem.text.split("/")[-1] if id_elem is not None else ""
                 
                 paper = {
                     "id": arxiv_id,
@@ -101,7 +89,6 @@ class ArxivService:
                 results.append(paper)
             
             return results
-        
         except Exception as e:
             logger.error(f"Error parsing arXiv response: {str(e)}")
             return []

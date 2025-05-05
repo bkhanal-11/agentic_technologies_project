@@ -47,7 +47,7 @@ class RelevantAgent(Agent):
                 {json.dumps([{
                     "id": p.get("id"),
                     "title": p.get("title"),
-                    "summary": p.get("summary", ""),
+                    "abstract": p.get("summary", ""),
                     "authors": p.get("authors", [])[:3]
                 } for p in sample_results], indent=2)}
                 

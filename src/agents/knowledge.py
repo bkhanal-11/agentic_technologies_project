@@ -46,7 +46,7 @@ class KnowledgeAggregatorAgent(Agent):
                     paper_data.append({
                         "id": paper_id,
                         "title": paper.get("title"),
-                        "summary": paper.get("summary", ""),
+                        "abstract": paper.get("summary", ""),
                         "authors": paper.get("authors", [])[:3],
                         "relevance_score": paper.get("relevance_score", 0),
                         "url": paper.get("page_url", "")
