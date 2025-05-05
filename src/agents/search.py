@@ -70,7 +70,11 @@ class SearchAgent(Agent):
                 
             except Exception as e:
                 logger.error(f"Error in SearchAgent: {str(e)}")
-    
+        
+        async def on_end(self):
+            logger.info("SearchBehaviour has ended. Stopping the agent.")
+            await self.agent.stop()
+
     async def setup(self):
         template = Template(metadata={"type": MessageType.SEARCH_PARAMS})
         behaviour = self.SearchBehaviour()

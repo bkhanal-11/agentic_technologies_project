@@ -69,6 +69,10 @@ class KnowledgeAggregatorAgent(Agent):
                 
             except Exception as e:
                 logger.error(f"Error in KnowledgeAggregatorAgent: {str(e)}")
+        
+        async def on_end(self):
+            logger.info("AggregateKnowledgeBehaviour has ended. Stopping the agent.")
+            await self.agent.stop()
     
     async def setup(self):
         template = Template(metadata={"type": MessageType.RELEVANT_PAPERS})

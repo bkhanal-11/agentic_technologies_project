@@ -150,7 +150,11 @@ class QueryConstructionAgent(Agent):
                 
                 logger.error("Failed to extract JSON from LLM response")
                 return {}
-    
+        
+        async def on_end(self):
+            logger.info("ConstructQueryBehaviour has ended. Stopping the agent.")
+            await self.agent.stop()
+
     async def setup(self):
         template_research = Template(metadata={"type": MessageType.RESEARCH_QUERY})
         template_refined = Template(metadata={"type": MessageType.REFINED_QUERY})

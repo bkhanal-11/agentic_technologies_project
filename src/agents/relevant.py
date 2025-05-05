@@ -11,6 +11,7 @@ from services.gemini import GeminiLLMService
 from utils.logger import logger
 from config import CONFIG
 from models import MessageType
+
 class RelevantAgent(Agent):
     """
     Responsible for finding relevant papers and deciding whether to refine the query.
@@ -129,6 +130,10 @@ class RelevantAgent(Agent):
                 
             except Exception as e:
                 logger.error(f"Error in RelevantAgent: {str(e)}")
+        
+        async def on_end(self):
+            logger.info("FindRelevantBehaviour has ended. Stopping the agent.")
+            await self.agent.stop()
         
         def _extract_json_from_llm_response(self, response: str) -> Dict[str, Any]:
             """Extract JSON content from LLM response text"""
