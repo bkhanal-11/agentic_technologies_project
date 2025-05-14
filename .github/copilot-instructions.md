@@ -10,7 +10,7 @@
 
 
 
-- The current knowledge base structure is a json file under `./src/results`:
+- The current knowledge base structure is a json file under `./src/knowledge_bases`:
 ```json
 {
   "research_question": "",

@@ -5,7 +5,7 @@ from spade.agent import Agent
 from spade.behaviour import OneShotBehaviour
 from spade.message import Message
 
-from agents import SearchAgent, QueryConstructionAgent, RelevantAgent, KnowledgeAggregatorAgent
+from agents import SearchAgent, QueryConstructionAgent, RelevantAgent, KnowledgeAggregatorAgent, AnalysisAgent
 from utils.logger import logger
 from models import MessageType
 
@@ -14,12 +14,14 @@ async def main():
     search_agent = SearchAgent("search_agent@localhost", "password")
     relevant_agent = RelevantAgent("relevant_agent@localhost", "password")
     knowledge_aggregator = KnowledgeAggregatorAgent("knowledge_aggregator_agent@localhost", "password")
+    analysis_agent = AnalysisAgent("analysis_agent@localhost", "password")
     
     # Start the agents
     await query_construction.start()
     await search_agent.start()
     await relevant_agent.start()
     await knowledge_aggregator.start()
+    await analysis_agent.start()
     
     logger.info("All agents started. MAS is running.")
     
@@ -49,6 +51,7 @@ async def main():
     await search_agent.stop()
     await relevant_agent.stop()
     await knowledge_aggregator.stop()
+    await analysis_agent.stop()
     await temp_agent.stop()
     
     logger.info("MAS stopped.")

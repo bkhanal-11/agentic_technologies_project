@@ -16,3 +16,4 @@ index_files/
 *.db
 **/__pycache__/
 **/results/
+**/knowledge_bases/
