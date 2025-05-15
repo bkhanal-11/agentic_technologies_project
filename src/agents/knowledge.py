@@ -21,7 +21,7 @@ class KnowledgeAggregatorAgent(Agent):
 
     class AggregateKnowledgeBehaviour(OneShotBehaviour):
         async def run(self):
-            msg = await self.receive(timeout=CONFIG["timeout"])
+            msg = await self.receive(timeout=CONFIG["timeout"]*2)
             if not msg:
                 logger.warning("KnowledgeAggregatorAgent timeout - no message received")
                 return

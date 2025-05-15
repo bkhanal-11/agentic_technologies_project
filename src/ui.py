@@ -68,7 +68,7 @@ async def run_mas(research_question):
     temp_agent = TempAgent("user@localhost", "password")
     await temp_agent.start()
     
-    await asyncio.sleep(30)  # 5 minutes
+    await asyncio.sleep(30)  
     
     # Stop all agents
     await query_construction.stop()

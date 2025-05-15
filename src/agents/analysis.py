@@ -129,18 +129,17 @@ class AnalysisAgent(Agent):
                     json.dump(results, f, indent=2)
                 logger.info(f"Saved analysis results to {results_path}")
 
-                # Send message to SummarizationAgent
-                # summarization_agent_jid = "summarization_agent@localhost"
-                # out_msg = Message(to=summarization_agent_jid)
-                # out_msg.set_metadata("type", MessageType.ANALYSIS_READY)
-                # out_msg.body = json.dumps({
-                #     "folder_path": folder_path,
-                #     "results_path": results_path,
-                #     "research_question": research_question,
-                #     "timestamp": timestamp
-                # })
-                # await self.send(out_msg)
-                logger.info(f"Sent analysis results to SummarizationAgent: {results_path}")
+                #Send message to SynthesisAgent
+                synthesis_agent_id = "synthesis_agent@localhost"
+                out_msg = Message(to=synthesis_agent_id)
+                out_msg.set_metadata("type", MessageType.ANALYSIS_READY)
+                out_msg.body = json.dumps({
+                    "folder_path": folder_path,
+                    "results_path": results_path,
+                    "research_question": research_question,
+                })
+                await self.send(out_msg)
+                logger.info(f"Sent analysis results to SynthesisAgent: {results_path}")
 
             except Exception as e:
                 logger.error(f"Error in AnalysisAgent: {str(e)}")
