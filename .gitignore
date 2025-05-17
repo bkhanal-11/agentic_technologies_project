@@ -17,3 +17,4 @@ index_files/
 **/__pycache__/
 **/results/
 **/knowledge_bases/
+**/.env
