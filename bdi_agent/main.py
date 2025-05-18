@@ -1,5 +1,6 @@
 import asyncio
 import json
+import os
 
 from spade.agent import Agent
 from spade.behaviour import OneShotBehaviour
@@ -12,6 +13,7 @@ from models import MessageType
 
 
 async def main():
+    # Create the BDI agents with ASL files
     query_construction = QueryConstructionBDIAgent(
         "query_construction_agent@localhost", 
         "password", 
@@ -64,7 +66,7 @@ async def main():
     temp_agent = TempAgent("user@localhost", "password")
     await temp_agent.start()
     
-    await asyncio.sleep(300)
+    await asyncio.sleep(300)  # 5 minutes
     
     # Stop all agents
     await query_construction.stop()

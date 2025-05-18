@@ -32,7 +32,7 @@ async def analyze_paper(content: str, research_question: str) -> dict:
         "Given the following research paper content, extract the following as a JSON object: "
         "1. Methodology\n2. Findings\n3. Future work (leave as an empty string if the paper does not mention any future work).\n"
         f"Research Question: {research_question}\n"
-        f"Paper Content:\n{content[:5000]}\n"  # Limit content to 5000 chars to avoid token limits
+        f"Paper Content:\n{content[:5000]}\n"  # Limit content to avoid token limits
         "Return a JSON object with keys: methodology, findings, future_work. "
         "Be concise, comprehensive and accurate."
     )
@@ -44,9 +44,9 @@ async def analyze_paper(content: str, research_question: str) -> dict:
         "topK": 40
     }
     try:
-        logger.info(f"Calling Gemini API to analyze paper content of length {len(content)}")
+        logger.info(f"Calling Gemini API for paper analysis")
         response = await gemini.generate_content(prompt, generation_config)
-        logger.info(f"Received response from Gemini API: {response[:100]}...")
+        logger.info(f"Received response from Gemini API for paper analysis")
         
         # Try to parse JSON from response
         try:
@@ -78,7 +78,7 @@ async def analyze_paper(content: str, research_question: str) -> dict:
             logger.warning(f"Failed to parse Gemini response as JSON: {e}")
             return {
                 "methodology": "Failed to parse response: " + str(e),
-                "findings": "Response from API: " + response[:100] + "...",
+                "findings": "Raw response from API: " + response[:100] + "...",
                 "future_work": ""
             }
     except Exception as e:
@@ -141,15 +141,13 @@ class AnalysisAgent(Agent):
 
                 results = {}
 
-                # Debug: Check if research_data has papers
-                logger.info(f"Research data contains {len(research_data.get('papers', []))} papers")
-
+                # Analyze each paper
                 for md_file in paper_files:
                     md_path = Path(folder_path) / md_file
                     paper_id = md_path.stem
                     logger.info(f"Analyzing paper {paper_id}")
 
-                    # get paper metadata
+                    # Get paper metadata
                     paper_metadata = None
                     for paper in research_data.get("papers", []):
                         if paper.get("id") == paper_id:
@@ -167,7 +165,7 @@ class AnalysisAgent(Agent):
                     
                     try:
                         analysis = await analyze_paper(content, research_question)
-                        logger.info(f"Analyzed {md_file} with Gemini")
+                        logger.info(f"Successfully analyzed {md_file} with Gemini")
                     except Exception as e:
                         logger.warning(f"Gemini analysis failed for {md_file}: {e}")
                         analysis = {"methodology": "", "findings": "", "future_work": ""}
@@ -183,7 +181,7 @@ class AnalysisAgent(Agent):
                     json.dump(results, f, indent=2)
                 logger.info(f"Saved analysis results to {results_path}")
 
-                #Send message to SynthesisAgent
+                # Send message to SynthesisAgent
                 synthesis_agent_id = "synthesis_agent@localhost"
                 out_msg = Message(to=synthesis_agent_id)
                 out_msg.set_metadata("type", MessageType.ANALYSIS_READY)
