@@ -1,0 +1,6 @@
+pyjabber==0.2.4
+slixmpp==1.9.1
+spade==4.0.3
+streamlit==1.45.0
+python-dotenv==1.1.0
+spade-bdi==0.3.2

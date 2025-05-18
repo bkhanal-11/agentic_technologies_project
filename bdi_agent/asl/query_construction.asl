@@ -1,15 +1,20 @@
 // Initial beliefs
-api_key("default_key").
+ready(true).
 
-// Initial goal
-!start.
+// Initial goals
+!setup.
 
 // Plans
-+!start <- .print("Query Construction Agent started").
++!setup
+   <- .print("QueryConstructionAgent initialized with BDI architecture").
 
-+research_query(Question)[source(Sender)] <-
-    .print("Received research question: ", Question);
-    .constructQuery(Question, Params);
-    .print("Created search parameters: ", Params);
-    +query_result(Params).
-        
+// Plan for handling a new research query
++research_query(Question)
+   <- .print("Received research question: ", Question);
+      !process_query(Question).
+
+// Simple plan to process regular queries
++!process_query(Question)
+   <- .print("Processing query: ", Question);
+      .process_regular_query(Question);
+      -research_query(Question).

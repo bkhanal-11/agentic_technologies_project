@@ -1,28 +1,15 @@
 // Initial beliefs
-results_dir("results").
-max_papers(10).
+ready(true).
 
-// Goals
-!start.
-!create_results_directory.
-
-// Plan to create results directory at startup
-+!create_results_directory : results_dir(Dir) <-
-    .print("Ensuring results directory exists");
-    // Note the dot prefix
-    .createDirectory(Dir).
+// Initial goals
+!setup.
 
 // Plans
-+!start <- .print("KnowledgeAggregatorAgent started and waiting for relevant papers").
++!setup
+   <- .print("KnowledgeAggregatorAgent initialized with BDI architecture").
 
-// Plan to handle relevant papers
-+relevant_papers(Data)[source(Sender)] : true <-
-    .print("Received relevant papers for aggregation");
-    // Note the dot prefix
-    .processRelevantPapers(Data, Result);
-    // Save the result to file - note the dot prefix
-    .saveResults(Result);
-    // Indicate completion by adding a belief
-    +aggregation_completed(Result).
-
-// Note: Recovery plans are ignored in current AgentSpeak implementation
+// Plan for handling relevant papers
++relevant_papers(Question, Papers)
+   <- .print("Received relevant papers for question: ", Question);
+      .register_relevant_papers(Question, Papers);
+      -relevant_papers(Question, Papers).

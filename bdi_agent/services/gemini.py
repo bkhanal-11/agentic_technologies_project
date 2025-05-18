@@ -9,25 +9,35 @@ class GeminiLLMService:
         self.api_key = api_key
         self.base_url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
         
-    async def generate_content(self, prompt: str) -> str:
+    async def generate_content(self, prompt: str, generation_config: dict = None) -> str:
         """Generate content using Gemini Pro model"""
         params = {
             "key": self.api_key
         }
         
-        payload = {
-            "contents": [{
-                "parts": [{
-                    "text": prompt
-                }]
-            }],
-            "generationConfig": {
-                "temperature": 0.7,
-                "maxOutputTokens": 1000,
-                "topP": 0.95,
-                "topK": 40
+        if generation_config:
+            payload = {
+                "contents": [{
+                    "parts": [{
+                        "text": prompt
+                    }]
+                }],
+                "generationConfig": generation_config
             }
-        }
+        else:
+            payload = {
+                "contents": [{
+                    "parts": [{
+                        "text": prompt
+                    }]
+                }],
+                "generationConfig": {
+                    "temperature": 0.7,
+                    "maxOutputTokens": 1000,
+                    "topP": 0.95,
+                    "topK": 40
+                }
+            }
         
         async with aiohttp.ClientSession() as session:
             async with session.post(
